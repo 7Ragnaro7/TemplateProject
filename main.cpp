@@ -69,6 +69,12 @@ public:
       glPopMatrix();
 
 
+      //Objeto Nuevo
+      glPushMatrix();
+      glTranslatef(0.0, 0.0, 0.0);
+      glutSolidOctahedron();
+      glPopMatrix();
+
       //Triangulo equilatero
       glPushMatrix();
       glTranslatef(0.0, 3.0, 0.0);
@@ -78,6 +84,8 @@ public:
       glVertex3f(-0.5, 0.0, 0.0);
       glEnd();
       glPopMatrix();
+
+
 
 
       if (shader) shader->end();
