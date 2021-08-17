@@ -9,7 +9,9 @@
 #include <iostream>
 #include "glsl.h"
 #include <time.h>
-
+#include "Arbol.h"
+#include "trianguloM.h"
+#include "nuevoObj.h"
 //-----------------------------------------------------------------------------
 
 
@@ -21,8 +23,10 @@ protected:
    GLuint ProgramObject;
    clock_t time0,time1;
    float timer010;  // timer counting 0->1->0
-   bool bUp;        // flag if counting up or down.
-
+   bool bUp;// flag if counting up or down.
+   Arbol Mango;
+   trianguloM triangulo;
+   nuevoObj nuevo;
 
 public:
 	myWindow(){}
@@ -37,56 +41,22 @@ public:
       glTranslatef(0, 0, -5);
       //Primera tetera (0, -3, 0)  
       glPushMatrix();
-         glTranslatef(0.0, -3.0, 0.0);
-         glutSolidTeapot(0.5);
+         glTranslatef(3.0, 0.0, 0.0);
+         glutSolidTeapot(1);
       glPopMatrix();
 
-
-      //Segunda tetera (3, 0, 0)
       glPushMatrix();
-        glTranslatef(3.0, 0.0, 0.0);
-        glutSolidTeapot(0.5);
+      Mango.DibujarArbol(-3, 0, 0);
       glPopMatrix();
 
-      //Tercera tetera (-3, 0, 0)
       glPushMatrix();
-      glTranslatef(-3.0, 0.0, 0.0);
-      glutSolidTeapot(0.5);
+      triangulo.DibujarTrianguloM(0, 3, 0);
       glPopMatrix();
 
-      //Primer cubo 45 grados
+
       glPushMatrix();
-      glTranslatef(3.0, 3.0, 0.0);
-      glRotatef(45.0, 0.0, 0.5, -0.7);
-      glutSolidCube(0.5);
+      nuevo.dibujarNuevo(0, -3, 0);
       glPopMatrix();
-
-      //segundo cubo 30 grados
-      glPushMatrix();
-      glTranslatef(-3.0, 3.0, 0.0);
-      glRotatef(30.0, 0.0, 0.0, -0.2);
-      glutSolidCube(0.5);
-      glPopMatrix();
-
-
-      //Objeto Nuevo
-      glPushMatrix();
-      glTranslatef(0.0, 0.0, 0.0);
-      glutSolidOctahedron();
-      glPopMatrix();
-
-      //Triangulo equilatero
-      glPushMatrix();
-      glTranslatef(0.0, 3.0, 0.0);
-      glBegin(GL_TRIANGLES);
-      glVertex3f(0.0, 0.5, 0.0);
-      glVertex3f(0.5, 0.0, 0.0);
-      glVertex3f(-0.5, 0.0, 0.0);
-      glEnd();
-      glPopMatrix();
-
-
-
 
       if (shader) shader->end();
       glutSwapBuffers();
@@ -103,6 +73,7 @@ public:
 	// is already available!
 	virtual void OnInit()
 	{
+       
 		glClearColor(0.5f, 0.5f, 1.0f, 0.0f);
 		glShadeModel(GL_SMOOTH);
 		glEnable(GL_DEPTH_TEST);
@@ -118,7 +89,9 @@ public:
       time0 = clock();
       timer010 = 0.0f;
       bUp = true;
-
+      Mango = Arbol();
+      triangulo = trianguloM();
+      nuevo = nuevoObj();
       DemoLight();
 
 	}

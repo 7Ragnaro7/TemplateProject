@@ -69,6 +69,9 @@
     <ClInclude Include="cwc\include\glWindow.h">
       <Filter>cwc\include</Filter>
     </ClInclude>
+    <ClInclude Include="Arbol.h" />
+    <ClInclude Include="trianguloM.h" />
+    <ClInclude Include="nuevoObj.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="glew\source\glew.c">
@@ -153,6 +156,9 @@
       <Filter>cwc\source</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Arbol.cpp" />
+    <ClCompile Include="trianguloM.cpp" />
+    <ClCompile Include="nuevoObj.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="freeglut\source\freeglutdll.def">
